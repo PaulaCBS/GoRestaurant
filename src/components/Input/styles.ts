@@ -1,6 +1,17 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+type ContainerProps = {
+  isFocused: boolean
+  isFilled: boolean
+}
+type IconProps = {
+  size: number
+}
+
+export const Container = styled.div.attrs((props: ContainerProps) => ({
+  inputFocus: props.isFocused,
+  inputFilled: props.isFilled
+}))<ContainerProps>`
   display: flex;
   align-items: center;
 
@@ -49,3 +60,9 @@ export const Container = styled.div`
     margin-right: 16px;
   }
 `;
+
+export const Icon = styled.div.attrs((props: IconProps) => ({
+  width: props.size
+}))<IconProps>`
+  width: ${props => props.size}
+`
